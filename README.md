@@ -4,3 +4,9 @@ This project is inspired by my Library-System project, which was developed entir
 
 So, I wanted to recreate it using the MERN stack to produce a fully functional web application.
 
+### Technologies
+
+```
+- [Express.js]
+- [nodemon]
+```
