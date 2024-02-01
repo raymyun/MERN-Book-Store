@@ -9,4 +9,7 @@ So, this is a recreation using the MERN stack to produce a fully functional web 
 ```
 - [Express.js]
 - [nodemon]
+- [MongoDB]
+- [Mongoose.js]
+- [Postman API Platform]
 ```
