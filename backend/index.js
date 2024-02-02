@@ -41,12 +41,28 @@ app.post('/books', async (request, response) => {
 // Route - Get all books from the database
 app.get('/books', async (request, response) => {
     try {
-        const books = await Book.find({})
+        const books = await Book.find({});
         // Status 200 for success
+        // Return found books
         return response.status(200).json({
             count: books.length,
             data: books
         });
+    } catch (error) {
+        console.log(error.message);
+        response.status(500).send({ message: error.message });
+    }
+});
+
+// Route - Get a book from the database by ID
+app.get('/books/:id', async (request, response) => {
+    try {
+        // Destructure request
+        const { id } = request.params;
+        const book = await Book.findById(id);
+        // Status 200 for success
+        // Return found book
+        return response.status(200).json(book);
     } catch (error) {
         console.log(error.message);
         response.status(500).send({ message: error.message });
