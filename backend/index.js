@@ -99,6 +99,24 @@ app.put('/books/:id', async (request, response) => {
     }
 });
 
+// Route - Deleting an existing book
+app.delete('/books/:id', async (request, response) => {
+    try {
+        const { id } = request.params;
+        const result = await Book.findByIdAndDelete(id);
+        if (!result) {
+            return response.status(404).json({ message: 'Book with provided ID does not exist in the database.'});
+        }
+        else {
+            return response.status(200).send({ message: 'Book was deleted successfully.'});
+        }
+        
+    } catch (error) {
+        console.log(error.message);
+        return response.status(500).send({ message: error.message });
+    }
+});
+
 mongoose
     .connect(mongoDBURL)
     .then(() => {
