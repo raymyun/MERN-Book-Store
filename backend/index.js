@@ -82,6 +82,9 @@ app.put('/books/:id', async (request, response) => {
         const result = await Book.findByIdAndUpdate(id, request.body);
         // Check if the book exists in the database
         // Status 404 for object not found
+        // Note: Not a bug, but
+        // 1: When the ID is of correct length, but with incorrect characters, we get a FALSE result and get error with status 404
+        // 2: When the ID is of incorrect length, it is CAUGHT by the trycatch, and we get an error with status 500
         if (!result) {
             return response.status(404).json({ message: 'Book with provided ID does not exist in the database.'});
         }
