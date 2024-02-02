@@ -18,6 +18,7 @@ app.get('/', (request, response) => {
 // Route - Adding a new book to the database
 app.post('/books', async (request, response) => {
     try {
+        // Check that the user has provided all required fields properly
         if (!request.body.title || !request.body.author || !request.body.publishYear) {
             // Status 400 for client error
             return response.status(400).send({ message: 'Provide all required fields: title, author, publishYear'});
@@ -57,12 +58,38 @@ app.get('/books', async (request, response) => {
 // Route - Get a book from the database by ID
 app.get('/books/:id', async (request, response) => {
     try {
-        // Destructure request
+        // Destructure request to get ID of desired book
         const { id } = request.params;
         const book = await Book.findById(id);
         // Status 200 for success
         // Return found book
         return response.status(200).json(book);
+    } catch (error) {
+        console.log(error.message);
+        response.status(500).send({ message: error.message });
+    }
+});
+
+// Route - Update an existing book in the database
+app.put('/books/:id', async (request, response) => {
+    try {
+        // Again, check that the user has provided all required fields properly
+        if (!request.body.title || !request.body.author || !request.body.publishYear) {
+            return response.status(400).send({ message: 'Provide all required fields: title, author, publishYear'});
+        }
+        // Destructure request to get ID of desired book
+        const { id } = request.params;
+        const result = await Book.findByIdAndUpdate(id, request.body);
+        // Check if the book exists in the database
+        // Status 404 for object not found
+        if (!result) {
+            return response.status(404).json({ message: 'Book with provided ID does not exist in the database.'});
+        }
+        else {
+            // If found, status 200 for success
+            return response.status(200).send({ message: 'Book was updated successfully.'});
+        }
+
     } catch (error) {
         console.log(error.message);
         response.status(500).send({ message: error.message });
