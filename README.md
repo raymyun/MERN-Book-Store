@@ -15,4 +15,6 @@ So, this is a recreation using the MERN stack to produce a fully functional web 
 - [Vite]
 - [Tailwind CSS]
 - [React Router Dom]
+- [Axios]
+- [React-icons]
 ```
