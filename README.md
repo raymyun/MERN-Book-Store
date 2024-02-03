@@ -12,4 +12,5 @@ So, this is a recreation using the MERN stack to produce a fully functional web 
 - [MongoDB]
 - [Mongoose.js]
 - [Postman API Platform]
+- [Vite]
 ```
