@@ -38,7 +38,8 @@ const EditBook = () => {
         }
         setLoading(true);
         axios
-            .post('http://localhost:5555/books', data)
+            // .put for edit
+            .put(`http://localhost:5555/books/${id}`, data)
             .then(() => {
                 setLoading(false);
                 navigate('/');
