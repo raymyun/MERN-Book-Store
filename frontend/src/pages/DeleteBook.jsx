@@ -54,6 +54,12 @@ const DeleteBook = () => {
                 <h3 className='text-2xl'>
                     <span className='font-bold'>{book.title}</span> by <span className='font-semibold'>{book.author}</span>
                 </h3>
+                <button
+                    className='p-4 bg-red-700 text-white font-semibold mt-6 w-[200px] rounded-xl'
+                    onClick={handleDeleteBook}
+                >
+                    Delete
+                </button>
             </div>
         </div>
     )
