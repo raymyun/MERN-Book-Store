@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import BackButton from '../components/BackButton';
@@ -6,8 +6,24 @@ import Loader from '../components/Loader';
 
 const DeleteBook = () => {
     const [loading, setLoading] = useState(false);
+    const [book, setBook] = useState({});
     const navigate = useNavigate();
     const { id } = useParams();
+
+    useEffect(() => {
+        setLoading(true);
+        axios
+            .get(`http://localhost:5555/books/${id}`)
+            .then((response) => {
+                setBook(response.data);
+                setLoading(false);
+            })
+            .catch((error) => {
+                console.log(error);
+                setLoading(false);
+            })
+    }, []);
+
 
     const handleDeleteBook = () => {
         setLoading(true);
@@ -31,7 +47,14 @@ const DeleteBook = () => {
                 Delete Book
             </h1>
             {loading ? <Loader /> : ''}
-            
+            <div className='flex flex-col items-center border-2 border-sky-400 rounded-xl w-[600px] p-8 mx-auto'>
+                <h3 className='text-2xl'>
+                    Are you sure you want to <span className='text-red-700 font-semibold'>delete</span> this book?
+                </h3>
+                <h3 className='text-2xl'>
+                    <span className='font-bold'>{book.title}</span> by <span className='font-semibold'>{book.author}</span>
+                </h3>
+            </div>
         </div>
     )
 }
