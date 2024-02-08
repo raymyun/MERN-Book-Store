@@ -1,12 +1,10 @@
-import axios, { Axios } from 'axios';
+import axios from 'axios';
 import { useEffect, useState } from 'react';
 import Loader from '../components/Loader';
 import BooksTable from '../components/home/BooksTable';
 import BooksCards from '../components/home/BooksCards';
 import { Link } from 'react-router-dom';
-import { AiOutlineEdit } from 'react-icons/ai';
-import { BsInfoCircle } from 'react-icons/bs';
-import { MdOutlineAddBox, MdOutlineDelete } from 'react-icons/md';
+import { MdOutlineAddBox } from 'react-icons/md';
 
 const Home = () => {
     const [books, setBooks] = useState([]);
