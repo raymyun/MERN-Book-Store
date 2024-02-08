@@ -18,3 +18,9 @@ So, this is a recreation using the MERN stack to produce a fully functional web 
 - [Axios]
 - [React-icons]
 ```
+
+### ToDo:
+- Add user accounts and admin accounts
+- Add review system
+- Import user friendly components(book images, page backgrounds, card backgrounds)
+- Add soothing cafe-esque audio for bgm
