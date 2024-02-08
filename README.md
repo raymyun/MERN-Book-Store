@@ -24,3 +24,4 @@ So, this is a recreation using the MERN stack to produce a fully functional web 
 - Add review system
 - Import user friendly components(book images, page backgrounds, card backgrounds)
 - Add soothing cafe-esque audio for bgm
+- Add DEMO references(screenshots/screen recordings)
