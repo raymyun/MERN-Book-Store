@@ -2,7 +2,7 @@ import axios, { Axios } from 'axios';
 import { useEffect, useState } from 'react';
 import Loader from '../components/Loader';
 import BooksTable from '../components/home/BooksTable';
-import BookCards from '../components/home/BookCards';
+import BooksCards from '../components/home/BooksCards';
 import { Link } from 'react-router-dom';
 import { AiOutlineEdit } from 'react-icons/ai';
 import { BsInfoCircle } from 'react-icons/bs';
@@ -54,7 +54,7 @@ const Home = () => {
             {loading ? (
                 <Loader />
             ) : (
-                <BooksTable books={books} />
+                showType === 'table' ? ( <BooksTable books={books} /> ) : ( <BooksCards books={books} /> )
             )}
         </div>
     )
