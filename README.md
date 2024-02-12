@@ -20,6 +20,7 @@ So, this is a recreation using the MERN stack to produce a fully functional web 
 ```
 
 ### ToDo:
+- (Urgent) Bug with Book Modal display: Sometimes modal won't close when clicking outside of modal.
 - Add user accounts and admin accounts
 - Add review system
 - Import user friendly components(book images, page backgrounds, card backgrounds)
